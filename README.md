@@ -1,4 +1,4 @@
-# TERRAFORM-AWS-S3-CF-REDIRECT
+# S3-CF-REDIRECT
 
 Use Terraform to provision the infrastructure necessary to redirect traffic from one domain name to another. This module provisions S3 buckets, KMS key, CloudFront distribution, Route 53 records, and a ACM certificate. 
 
@@ -12,4 +12,4 @@ Use Terraform to provision the infrastructure necessary to redirect traffic from
 
 ## ARCHITECTURE DIAGRAM
 
-![Diagram](terraform-aws-s3-cf-redirect-diagram.png)
+![Diagram](https://github.com/squidsuit/terraform-aws-s3-cf-redirect/blob/main/terraform-aws-s3-cf-redirect-diagram.png?raw=true)
