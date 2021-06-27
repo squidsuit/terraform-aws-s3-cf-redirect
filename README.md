@@ -1,7 +1,5 @@
 # TERRAFORM-AWS-S3-CF-REDIRECT
 
-[![Checkov GitHub Action](https://github.com/squidsuit/terraform-aws-s3-cf-redirect/actions/workflows/github-action-workflow.yml/badge.svg)](https://github.com/squidsuit/terraform-aws-s3-cf-redirect/actions/workflows/github-action-workflow.yml)
-
 Use Terraform to provision the infrastructure necessary to redirect traffic from one domain name to another. This module provisions S3 buckets, KMS key, CloudFront distribution, Route 53 records, and a ACM certificate. 
 
 ## ASSUMPTIONS
