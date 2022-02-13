@@ -4,7 +4,9 @@ Use Terraform to provision the infrastructure necessary to redirect traffic from
 
 ## LIMITATIONS
 
-This module was written using version `3.x` of the AWS Provider. [Version 4.0](https://github.com/hashicorp/terraform-provider-aws/releases/tag/v4.0.0) of the provider brought many breaking changes to the management of S3 buckets and related configuration. Attempting to use AWS Provider `4.x` in conjunction with this module will lead down a path of pain. If you must use AWS Provider `4.x`, look elsewhere for now. 
+This module has two minor versions, `0.1.x` and `0.2.x`. Each targets a specific AWS Provider version. With version `4.0` of the AWS provider many breaking changes were introduced with the way s3 buckets are managed.
+
+If you are using AWS provider version `3.x` use `0.1.x`. If you are using AWS provider version `4.x` use `0.2.x` of this module.
 
 ## ASSUMPTIONS
 
