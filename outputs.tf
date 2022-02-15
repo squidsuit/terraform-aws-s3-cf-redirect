@@ -1,20 +1,20 @@
 output "bucket-id" {
     description = "ID of the given S3 bucket"
     value = {
-        for k, v in aws_s3_bucket.bucket : k => v.id
+        for k, v in aws_s3_bucket.domain-bucket : k => v.id
     }
 }
 
 output "bucket-endpoint" {
     description = "The full website endpoint for the bucket, including region"
     value = {
-        for k, v in aws_s3_bucket.bucket : k => v.website_endpoint
+        for k, v in aws_s3_bucket_website_configuration.web-config : k => v.website_endpoint
     }
 } 
 
-output "logbucket-id" {
+output "log-bucket-id" {
     description = "Logging bucket ID"
-    value = aws_s3_bucket.logbucket.id
+    value = aws_s3_bucket.log-bucket.id
 }
 
 output "cloudfront-id" {

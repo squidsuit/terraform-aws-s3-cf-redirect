@@ -4,8 +4,8 @@ data "aws_route53_zone" "domain" {
 }
 
 resource "aws_route53_record" "record" {
-  for_each = aws_s3_bucket.bucket
-  name    = aws_s3_bucket.bucket[each.key].id
+  for_each = aws_s3_bucket.domain-bucket
+  name    = aws_s3_bucket.domain-bucket[each.key].id
   zone_id = data.aws_route53_zone.domain.zone_id
   type    = "A"
   
