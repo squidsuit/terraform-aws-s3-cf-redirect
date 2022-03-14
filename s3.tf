@@ -25,7 +25,7 @@ resource "aws_s3_bucket_logging" "log-bucket" {
     bucket = aws_s3_bucket.domain-bucket[each.key].id
 
     target_bucket = aws_s3_bucket.log-bucket.id
-    target_prefix = "log/${aws_s3_bucket.domain-bucket[each.key].id}"
+    target_prefix = "log/${aws_s3_bucket.domain-bucket[each.key].id}/"
 
 }
 
@@ -57,10 +57,31 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "encrypt-config" {
 
 }
 
+resource "aws_s3_bucket_server_side_encryption_configuration" "encrypt-config-logbucket" {
+
+    bucket = aws_s3_bucket.log-bucket.id
+    rule {
+    apply_server_side_encryption_by_default {
+        kms_master_key_id = aws_kms_key.mykey.arn
+        sse_algorithm     = "aws:kms"
+        }
+    }
+
+}
+
 resource "aws_s3_bucket_versioning" "version-config" {
 
     for_each = aws_s3_bucket.domain-bucket
     bucket = aws_s3_bucket.domain-bucket[each.key].id
+    versioning_configuration {
+        status = "Enabled"
+    }
+
+}
+
+resource "aws_s3_bucket_versioning" "version-config-logbucket" {
+
+    bucket = aws_s3_bucket.log-bucket.id
     versioning_configuration {
         status = "Enabled"
     }
