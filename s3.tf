@@ -49,11 +49,11 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "encrypt-config" {
     for_each = aws_s3_bucket.domain-bucket
     bucket = aws_s3_bucket.domain-bucket[each.key].id
     rule {
-    apply_server_side_encryption_by_default {
-        kms_master_key_id = aws_kms_key.mykey.arn
-        sse_algorithm     = "aws:kms"
+        apply_server_side_encryption_by_default {
+            kms_master_key_id = aws_kms_key.mykey.arn
+            sse_algorithm     = "aws:kms"
+            }
         }
-    }
 
 }
 
@@ -61,11 +61,11 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "encrypt-config-lo
 
     bucket = aws_s3_bucket.log-bucket.id
     rule {
-    apply_server_side_encryption_by_default {
-        kms_master_key_id = aws_kms_key.mykey.arn
-        sse_algorithm     = "aws:kms"
+        apply_server_side_encryption_by_default {
+            kms_master_key_id = aws_kms_key.mykey.arn
+            sse_algorithm     = "aws:kms"
+            }
         }
-    }
 
 }
 
@@ -73,6 +73,7 @@ resource "aws_s3_bucket_versioning" "version-config" {
 
     for_each = aws_s3_bucket.domain-bucket
     bucket = aws_s3_bucket.domain-bucket[each.key].id
+    
     versioning_configuration {
         status = "Enabled"
     }
@@ -82,6 +83,7 @@ resource "aws_s3_bucket_versioning" "version-config" {
 resource "aws_s3_bucket_versioning" "version-config-logbucket" {
 
     bucket = aws_s3_bucket.log-bucket.id
+    
     versioning_configuration {
         status = "Enabled"
     }
